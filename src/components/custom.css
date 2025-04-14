@@ -1,0 +1,137 @@
+
+/* Traffic light marker styles for maps */
+.traffic-light-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.traffic-light-marker .marker-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.traffic-light-marker .marker-dot.red {
+  background-color: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+}
+
+.traffic-light-marker .marker-dot.yellow {
+  background-color: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+}
+
+.traffic-light-marker .marker-dot.green {
+  background-color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.emergency-vehicle-marker {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.emergency-vehicle-marker .emergency-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+.emergency-vehicle-marker .emergency-dot.ambulance {
+  background-color: #ef4444;
+}
+
+.emergency-vehicle-marker .emergency-dot.fire {
+  background-color: #f97316;
+}
+
+.emergency-vehicle-marker .emergency-dot.police {
+  background-color: #3b82f6;
+}
+
+/* Existing SVG traffic map styles */
+.grid-road {
+  stroke: #94a3b8;
+  stroke-width: 4;
+}
+
+.grid-road.congested {
+  stroke: #ef4444;
+  stroke-width: 6;
+}
+
+.grid-road.moderate {
+  stroke: #f59e0b;
+  stroke-width: 5;
+}
+
+.traffic-light {
+  cursor: pointer;
+}
+
+.traffic-light.red {
+  fill: #ef4444;
+}
+
+.traffic-light.yellow {
+  fill: #f59e0b;
+}
+
+.traffic-light.green {
+  fill: #10b981;
+}
+
+/* Pulse animation for emergency indicators */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* Leaflet specific styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.custom-traffic-light div {
+  transition: background-color 0.3s ease;
+}
+
+.custom-emergency-vehicle div {
+  animation: pulse 1.5s infinite;
+}
+
+/* Override some Leaflet defaults for better visuals */
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) !important;
+}

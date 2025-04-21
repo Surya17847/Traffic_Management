@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSignin = async () => {
@@ -13,7 +14,7 @@ const Signin = () => {
       alert('Login successful!');
       navigate('/home');
     } catch (err) {
-      alert(err.message);
+      setErrorMessage(err.message);
       console.error(err);
     }
   };
@@ -21,30 +22,32 @@ const Signin = () => {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>signIn</h2>
+        <h2 style={styles.title}>Sign In</h2>
+        {errorMessage && <p style={styles.error}>{errorMessage}</p>}
         <input
           type="email"
           placeholder="Email"
           style={styles.input}
-          onChange={e => setEmail(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           style={styles.input}
-          onChange={e => setPassword(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button style={styles.button} onClick={handleSignin}>
-          Signin
+          Sign In
         </button>
         <p style={styles.linkText}>
-          Don't have an account? <span onClick={() => navigate('/')} style={styles.link}>Sign up</span>
+          Don't have an account? <span onClick={() => navigate('/')} style={styles.link}>Sign Up</span>
         </p>
       </div>
     </div>
   );
 };
-
 
 const styles = {
   container: {
@@ -64,22 +67,25 @@ const styles = {
   },
   title: {
     marginBottom: '1rem',
+    fontSize: '1.5rem',
   },
   input: {
     width: '100%',
-    padding: '0.6rem',
+    padding: '0.8rem',
     marginBottom: '1rem',
     border: '1px solid #ccc',
     borderRadius: '6px',
+    fontSize: '1rem',
   },
   button: {
     width: '100%',
-    padding: '0.6rem',
+    padding: '0.8rem',
     backgroundColor: '#007bff',
     color: '#fff',
     border: 'none',
     borderRadius: '6px',
     cursor: 'pointer',
+    fontSize: '1rem',
   },
   linkText: {
     marginTop: '1rem',
@@ -89,5 +95,11 @@ const styles = {
     color: '#007bff',
     cursor: 'pointer',
   },
+  error: {
+    color: 'red',
+    fontSize: '0.9rem',
+    marginBottom: '1rem',
+  },
 };
+
 export default Signin;

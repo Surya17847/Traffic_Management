@@ -23,12 +23,6 @@
       },
       "storage": {
         "s39f40b96f": {}
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d1etb2s3snx8oq",
-          "type": "manual"
-        }
       }
     }
   }

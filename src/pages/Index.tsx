@@ -19,7 +19,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { TrafficLightStatus, CongestionLevel } from "@/types/traffic";
 import { Bell, Settings, MapPin, RefreshCw, BrainCircuit } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import { LogOut } from "lucide-react"; 
 // API endpoint constants
 const API_BASE_URL = "http://localhost:5000/api";
 const REFRESH_DATA_ENDPOINT = `${API_BASE_URL}/refresh-data`;
@@ -173,6 +173,16 @@ const Index = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // const handleSignout = async (event: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
+  //   try {
+  //     await signOut();
+  //     console.log('signed out');
+  //     navigate("/"); // Redirect to the root (your sign-in page) after sign out
+  //   } catch (error) {
+  //     console.error('Error signing out:', error);
+  //     // Optionally display an error message to the user
+  //   }
+  // };
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-10 backdrop-blur-sm bg-background/80 border-b">
@@ -202,6 +212,7 @@ const Index = () => {
                 <Bell className="mr-1 h-4 w-4" />
                 Alerts
               </Button>
+              
               <Button
                 variant="outline"
                 size="sm"
